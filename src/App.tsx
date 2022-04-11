@@ -1,12 +1,14 @@
-import React from 'react';
-
+import React from "react";
+import GetMovies from "./Components/GetMoviesComponent/GetMovies";
 
 const App = () => {
- return(
-   <h2>
-     teste
-   </h2>
- )
+  
+    return(
+      <>
+      <GetMovies />
+      </>
+      )
+  
 }
 
 export default App;
