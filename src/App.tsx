@@ -1,11 +1,12 @@
 import React from "react";
-import GetMovies from "./Components/GetMoviesComponent/GetMovies";
+import Routes from "./Routes/RoutesComponent";
+
 
 const App = () => {
   
     return(
       <>
-      <GetMovies />
+      <Routes />
       </>
       )
   
