@@ -1,3 +1,4 @@
+import GenresInterface from "./GenresInterface";
 export default interface MovieInterface{
   id: string;
   title:string,
@@ -12,10 +13,5 @@ export default interface MovieInterface{
   lucro?:string,
   poster_path?:string,
   vote_average: number,
-  genres:string,
-}
-
-export default interface IdMovieInterface {
-  id:string;
-  name?: string;
+  genres:GenresInterface[],
 }

@@ -8,8 +8,8 @@ export const SearchComponent = () => {
   return(
     <Content action="">
       <SearchBox type="text"
-      name="search"
-      id="search"
+      name="query"
+      id="query"
       placeholder="Busque um filme por nome, ano ou gênero"
       onChange={(e: React.FormEvent<HTMLInputElement>) => setSearch(e.currentTarget.value)}/>
     </Content>

@@ -3,16 +3,15 @@ import {listOfMovies} from "../../Services/Api/api";
 import  MovieInterface from "../../Services/Interfaces/MovieInterface";
 import CardListComponent from "../../Components/CardListComponent/CardListComponent";
 
+
 const GetListMovies = () => {
   const[movies, setMovies] = useState<MovieInterface[]>([]);
-  const [pages, setPages] = useState({})
   const imageUrl = 'https://image.tmdb.org/t/p/w200/';
 
   const receiveListOfMovies = async() => {
     const getMoviesList = await listOfMovies;
     try {
       setMovies(getMoviesList.data.results);
-      console.log(getMoviesList)
     } catch(error) {
       console.log("Error: ", error)
     }
@@ -41,8 +40,10 @@ const GetListMovies = () => {
             return null;
           }
           return(
+            <>
               <CardListComponent
               key={movie.id}
+              id={movie.id}
               title={movie.title}
               release_date={movie.release_date}
               overview={movie.overview}
@@ -50,6 +51,7 @@ const GetListMovies = () => {
               vote_average={movie.vote_average}
               genres={movie.genres}
               />
+            </>
          ) 
         })}
         

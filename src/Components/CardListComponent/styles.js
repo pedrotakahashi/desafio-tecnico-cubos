@@ -110,7 +110,7 @@ export const GenresLabels = styled.div`
 `;
 
 export const Label = styled.span`
-  border: 1px solid ${ColorBlue.airSuperiorityBlue};
+  border: 2px solid ${ColorBlue.airSuperiorityBlue};
   background-color: ${Color.white};
   border-radius: 10px;
   padding: 1px 14px;
@@ -119,8 +119,7 @@ export const Label = styled.span`
   margin-right:0.5rem;
   transition: 1s;
   :hover {
-    border: 6px solid ${ColorBlue.beauBlue};
-    background-color:${ColorBlue.beauBlue};
+    border: 2px solid ${ColorBlue.beauBlue};
     transition: 0.47s;
   }
 `;

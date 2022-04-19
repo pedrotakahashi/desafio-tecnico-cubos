@@ -1,4 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { detailsOfMovie } from "../../Services/Api/api";
+import GenresInterface from "../../Services/Interfaces/GenresInterface";
 import { 
   Title,
   Text,
@@ -16,15 +19,18 @@ import {
   MovieContent
 } from "./styles";
 
+export const handleGetMovieId  = (value:string) =>{
+  return value;
+}
 
 export const CardListComponent = (props:{
   title?:string,
   release_date?:string,
   overview?:string,
   vote_average?:number,
-  id?:string,
+  id:string,
   poster_path?:string,
-  genres?:string,
+  genres?:GenresInterface[],
 }) => {
   
   return(
@@ -32,7 +38,7 @@ export const CardListComponent = (props:{
       <Content>
         <MovieCard>
           <ColumnImage>
-            <img src={props.poster_path} alt={props.title} height="100%"/>
+              <img src={props.poster_path} alt={props.title} height="100%" onClick={() =>handleGetMovieId(props.id)}/>
           </ColumnImage>
           <MovieContent>
             <Title>
@@ -55,10 +61,14 @@ export const CardListComponent = (props:{
                 {props.overview}
               </Text>
               <GenresLabels>
-                <Label>Ação</Label>
-                <Label>Aventura</Label>
-                <Label>Fantasia</Label>
-            </GenresLabels>
+              {props.genres?.map((x) =>{
+                return (
+                  <Label key={x.id}>
+                  {x.name}
+                  </Label>
+                )
+                })}
+          </GenresLabels>
             </Overview>
           </MovieContent>
         </MovieCard>

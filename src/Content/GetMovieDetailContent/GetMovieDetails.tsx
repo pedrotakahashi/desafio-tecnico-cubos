@@ -1,102 +1,97 @@
 import React, { useEffect, useState } from "react";
-import {listOfMovies, detailsOfMovie} from "../../Services/Api/api";
+import { detailsOfMovie } from "../../Services/Api/api";
 import CardDetail from "../../Components/CardDetailComponent/CardDetail";
 import { initialData } from "../../Constants/initialData";
+import MovieInterface from "../../Services/Interfaces/MovieInterface";
+import HeaderComponent from "../../Components/HeaderComponent/HeaderComponent";
 
 const GetMovieDetails = () => {
-  
-  const[movie, setMovie] = useState({...initialData});
-  const imageUrl = 'https://image.tmdb.org/t/p/w400/';
-
-  const receiveListOfMovies = async() => {
+  const [movie, setMovie] = useState({ ...initialData });
+  const imageUrl = 'https://image.tmdb.org/t/p/w300/';
+  const loadMovie = async () => {
     try {
-      const getMoviesList = await detailsOfMovie('634649');
-      setMovie(getMoviesList);
-    } catch(error) {
+      let movieContent = await detailsOfMovie('414906');
+      movieContent = convertRuntime(movieContent);
+      movieContent = convertStatus(movieContent);
+      movieContent = changeLanguage(movieContent);
+      movieContent = valueAverage(movieContent);
+      setMovie(movieContent);
+    } catch (error) {
       console.log("Error: ", error)
     }
-
   }
 
-  const convertStatus = () =>{
-    switch(movie.status){
+  const convertStatus = (loadedMovie: MovieInterface) => {
+    switch (loadedMovie.status) {
       case 'Released':
-        movie.status = 'Lançado';
+        loadedMovie.status = 'Lançado';
         break;
     }
-    return(movie);
+    return (loadedMovie);
   }
 
-  const convertRuntime = () =>{
-    if(!movie.runtime){
+  const convertRuntime = (loadedMovie: MovieInterface) => {
+    if (!loadedMovie.runtime) {
       return null;
-    } 
-    let newValue = movie.runtime;
-    newValue = movie.runtime/60;
-    movie.runtime = newValue;
-    console.log(movie.runtime);
-    return (movie.runtime);
+    }
+    let newValue = loadedMovie.runtime;
+    newValue = loadedMovie.runtime / 60;
+    loadedMovie.runtime = newValue;
+    return (loadedMovie);
   }
-  
-  const changeLanguage = () => {
-    switch(movie.original_language){
+
+  const changeLanguage = (loadedMovie: MovieInterface) => {
+    switch (loadedMovie.original_language) {
       case 'en':
-        movie.original_language = 'Inglês';
+        loadedMovie.original_language = 'Inglês';
         break;
       case 'fr':
-        movie.original_language = 'Francês';
+        loadedMovie.original_language = 'Francês';
         break;
       case 'ja':
-        movie.original_language = 'Japonês';
+        loadedMovie.original_language = 'Japonês';
         break;
       case 'es':
-        movie.original_language = 'Espanhol';
+        loadedMovie.original_language = 'Espanhol';
         break;
       case 'pt':
-        movie.original_language = 'Português';
+        loadedMovie.original_language = 'Português';
         break;
     }
-    return(movie);
+    return (loadedMovie);
   }
 
-  const valueAverage = () => {
-    if(movie.vote_average <= 10){
-      let convertedValue = movie.vote_average*10;  
-      movie.vote_average = convertedValue;
+  const valueAverage = (loadedMovie: MovieInterface) => {
+    if (loadedMovie.vote_average <= 10) {
+      let convertedValue = loadedMovie.vote_average * 10;
+      loadedMovie.vote_average = convertedValue;
     }
-    return (movie.vote_average)
+    return (loadedMovie)
   }
 
   useEffect(() => {
-    receiveListOfMovies();
-    convertRuntime();
-    convertStatus();
-    changeLanguage();
-    valueAverage();
+    loadMovie();
   }, [])
-  
 
-
-  
-
-  return(
+  return (
     <>
+      <HeaderComponent/>
       <CardDetail
-      key={movie?.id}
-      title={movie?.title}
-      overview={movie?.overview}
-      release_date={movie?.release_date}
-      poster_path={imageUrl+movie?.poster_path}
-      original_language={movie?.original_language}
-      status={movie?.status}
-      budget={movie?.budget}
-      vote_average={movie?.vote_average}
-      genres={movie?.genres}
-      runtime={movie.runtime}
-      revenue={movie?.revenue}
+        key={movie.id}
+        title={movie?.title}
+        overview={movie?.overview}
+        release_date={movie?.release_date}
+        poster_path={imageUrl + movie?.poster_path}
+        original_language={movie?.original_language}
+        status={movie?.status}
+        budget={movie?.budget}
+        vote_average={movie?.vote_average}
+        genres={movie?.genres}
+        runtime={movie.runtime}
+        revenue={movie?.revenue}
       />
     </>
- )
+  )
 }
 
 

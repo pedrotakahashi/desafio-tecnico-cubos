@@ -1,5 +1,5 @@
 import React from "react";
-import { TypeSection } from "../../Constants/movie";
+import { Section } from "../../Constants/movie";
 import { Content, Header, SectionBar } from "./styles";
 
 
@@ -9,7 +9,7 @@ export const HeaderComponent = () => {
     <Content>
       <SectionBar>
         <Header >
-          {TypeSection.movie}
+          {Section.movie}
         </Header>
       </SectionBar>
     </Content>

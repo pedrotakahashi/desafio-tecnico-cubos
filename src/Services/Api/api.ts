@@ -4,7 +4,7 @@ export const listOfMovies = axios.get(
 "https://api.themoviedb.org/3/movie/popular?api_key=2fab12914dc9f1245db2f654c6f8b321&language=en-US&page=1&page_size=5&language=pt-BR",
 );
 
-export const detailsOfMovie = async(id:String) =>{
+export const detailsOfMovie = async(id:String) => {
   try{
     if(!id) return;
     const response = await  axios.get(
@@ -14,10 +14,17 @@ export const detailsOfMovie = async(id:String) =>{
   }catch(error) {
     console.log(error);
   }
- 
 } 
 
-// export const detailsOfMovie = axios.get(
-//   "https://api.themoviedb.org/3/movie/675353?api_key=2fab12914dc9f1245db2f654c6f8b321&language=pt-BR",
-//   );
-  
+export const searchMovieByName =(name:String) => {
+  name="Homem-Aranha"
+  axios.get(
+  `https://api.themoviedb.org/3/search/movie?query=${name}api_key=2fab12914dc9f1245db2f654c6f8b321&language=pt-BR&page=1&include_adult=false`,
+  );
+}
+
+export const searchMovieByGenre =(genre:String) => {
+  axios.get(
+  `https://api.themoviedb.org/3/search/movie?query=${genre}api_key=2fab12914dc9f1245db2f654c6f8b321&language=pt-BR&page=1&include_adult=false`,
+  );
+}

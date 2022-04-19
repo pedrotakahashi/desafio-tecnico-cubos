@@ -14,5 +14,5 @@ export const initialData: MovieInterface = {
   lucro:'',
   poster_path:'',
   vote_average: 0,
-  genres:'',
+  genres:[],
 }
