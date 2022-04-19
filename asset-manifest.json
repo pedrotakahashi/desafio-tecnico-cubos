@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/desafio-tecnico-cubos/static/js/main.d40e5622.js",
-    "index.html": "/desafio-tecnico-cubos/index.html",
-    "main.d40e5622.js.map": "/desafio-tecnico-cubos/static/js/main.d40e5622.js.map"
+    "main.js": "/projeto-movies/static/js/main.a06b72b9.js",
+    "index.html": "/projeto-movies/index.html",
+    "main.a06b72b9.js.map": "/projeto-movies/static/js/main.a06b72b9.js.map"
   },
   "entrypoints": [
-    "static/js/main.d40e5622.js"
+    "static/js/main.a06b72b9.js"
   ]
 }
