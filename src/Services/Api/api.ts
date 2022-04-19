@@ -1,8 +1,23 @@
 import axios from 'axios';
 
-const responseApi = axios.get(
-"https://api.themoviedb.org/3/movie/popular?api_key=2fab12914dc9f1245db2f654c6f8b321&language=en-US&page=1&language=pt-BR",
+export const listOfMovies = axios.get(
+"https://api.themoviedb.org/3/movie/popular?api_key=2fab12914dc9f1245db2f654c6f8b321&language=en-US&page=1&page_size=5&language=pt-BR",
 );
 
-export default responseApi;
+export const detailsOfMovie = async(id:String) =>{
+  try{
+    if(!id) return;
+    const response = await  axios.get(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=2fab12914dc9f1245db2f654c6f8b321&language=pt-BR`
+    );
+    return response.data
+  }catch(error) {
+    console.log(error);
+  }
+ 
+} 
 
+// export const detailsOfMovie = axios.get(
+//   "https://api.themoviedb.org/3/movie/675353?api_key=2fab12914dc9f1245db2f654c6f8b321&language=pt-BR",
+//   );
+  

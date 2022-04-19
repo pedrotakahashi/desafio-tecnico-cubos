@@ -1,11 +1,17 @@
 import React from "react";
-import GetMovies from "./Components/GetMoviesComponent/GetMovies";
+import HeaderComponent from "./Components/HeaderComponent/HeaderComponent";
+import SearchComponent from "./Components/SearchComponent/SearchComponent";
+import GetListMovies from "./Content/GetListContent/GetListMovies";
+import GetMovieDetails from "./Content/GetMovieDetailContent/GetMovieDetails";
 
 const App = () => {
   
     return(
       <>
-      <GetMovies />
+      <HeaderComponent />
+      <SearchComponent />
+      {/* <GetListMovies/> */}
+      <GetMovieDetails />
       </>
       )
   
