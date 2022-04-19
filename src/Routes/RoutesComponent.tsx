@@ -6,7 +6,7 @@ import GetMovieDetails from "../Content/GetMovieDetailContent/GetMovieDetails";
 
 const RoutesComponent = () => {
     return(
-      <HashRouter basename={process.env.PUBLIC_URL}>
+      <HashRouter>
         <Routes>
             <Route element = { <GetListMovies/> }  path="/" />
             <Route element = { <GetMovieDetails /> }  path="/movie/:id" />
