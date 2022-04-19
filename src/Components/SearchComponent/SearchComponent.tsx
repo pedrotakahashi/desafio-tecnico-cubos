@@ -1,17 +1,23 @@
-import React,{ useState } from "react";
+import React from "react";
 import { Content, SearchBox } from "./styles";
 
+interface IProps {
+  search: string;
+  setSearch(value: string): void;
+}
 
-export const SearchComponent = () => {
-  const [search, setSearch] = useState("");
+export const SearchComponent = ({search, setSearch}: IProps) => {
   
   return(
     <Content action="">
-      <SearchBox type="text"
-      name="query"
-      id="query"
-      placeholder="Busque um filme por nome, ano ou gênero"
-      onChange={(e: React.FormEvent<HTMLInputElement>) => setSearch(e.currentTarget.value)}/>
+      <SearchBox
+        value={search}
+        type="text"
+        name="query"
+        id="query"
+        placeholder="Busque um filme por nome, ano ou gênero"
+        onChange={(e: React.FormEvent<HTMLInputElement>) => setSearch(e.currentTarget.value)}
+      />
     </Content>
   ) 
 }

@@ -15,12 +15,13 @@ export const MovieCard = styled.div`
   align-items: flex-start;
   background-color: ${Color.cultured};
   min-height: 40vh;
-  max-height: 100vh;
+  height: fit-content;
   position: relative;
 `;
 
 export const ColumnImage = styled.div`
   /* height: 100%; */
+  cursor: pointer;
 `;
 export const MovieContent = styled.div`
   height: 3.7rem;

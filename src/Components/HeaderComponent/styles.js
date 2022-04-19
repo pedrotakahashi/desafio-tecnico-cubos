@@ -18,3 +18,11 @@ export const SectionBar = styled.div`
   height:5rem;
   width: 100vw;
 `;
+
+export const Link = styled.a`
+  text-decoration: none;
+  color: ${ColorBlue.fluorescenteBlue};
+  :visited {
+    text-decoration:none;
+  }
+`;

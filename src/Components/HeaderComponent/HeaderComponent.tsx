@@ -1,15 +1,14 @@
 import React from "react";
 import { Section } from "../../Constants/movie";
-import { Content, Header, SectionBar } from "./styles";
+import { Content, Header, SectionBar, Link } from "./styles";
 
 
 export const HeaderComponent = () => {
-  
   return(
     <Content>
       <SectionBar>
-        <Header >
-          {Section.movie}
+        <Header>
+        <Link href="/" > {Section.movie}</Link>
         </Header>
       </SectionBar>
     </Content>

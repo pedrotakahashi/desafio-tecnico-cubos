@@ -3,14 +3,24 @@ import { detailsOfMovie } from "../../Services/Api/api";
 import CardDetail from "../../Components/CardDetailComponent/CardDetail";
 import { initialData } from "../../Constants/initialData";
 import MovieInterface from "../../Services/Interfaces/MovieInterface";
+import { useLocation, useNavigate } from "react-router-dom";
 import HeaderComponent from "../../Components/HeaderComponent/HeaderComponent";
+
 
 const GetMovieDetails = () => {
   const [movie, setMovie] = useState({ ...initialData });
   const imageUrl = 'https://image.tmdb.org/t/p/w300/';
+  const location = useLocation();
+  const navigate = useNavigate();
+  
   const loadMovie = async () => {
     try {
-      let movieContent = await detailsOfMovie('414906');
+      const splitLocation = location.pathname.split('/');
+      const movieId = splitLocation.length > 1 ? splitLocation[2] : '';
+      if (movieId === '') {
+        navigate('/')
+      }
+      let movieContent = await detailsOfMovie(movieId);
       movieContent = convertRuntime(movieContent);
       movieContent = convertStatus(movieContent);
       movieContent = changeLanguage(movieContent);
